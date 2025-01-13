@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Countdown</title>
+    <style>
+        body {
+            font-family: 'Cursive', Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #ffe4e1;
+        }
+        .timer {
+            font-size: 2em;
+            font-weight: bold;
+            color: #fff;
+        }
+        .heart {
+            color: #ff6b81;
+            font-size: 2.5em;
+        }
+        footer {
+            margin-top: 15px;
+            font-size: 1em;
+            color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 Countdown to Our Wedding 💖</h1>
+        <div class="timer" id="timer">Loading...</div>
+        <footer>
+            Can't wait to say "I Do"! 💍
+        </footer>
+    </div>
+
+    <script>
+        function updateTimer() {
+            const targetDate = new Date("2025-02-06T18:00:00");
+            const now = new Date();
+            const remainingTime = targetDate - now;
+
+            if (remainingTime > 0) {
+                const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+                document.getElementById("timer").textContent =
+                    `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+            } else {
+                document.getElementById("timer").textContent = "💖 The Big Moment is Here! 💖";
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+
+        updateTimer();
+    </script>
+</body>
+</html>
